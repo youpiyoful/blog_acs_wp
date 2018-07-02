@@ -10,7 +10,7 @@ function yfflat_scripts(){
     wp_enqueue_style("yfflat_custom", get_template_directory_uri() . "/css/style.css", array("yfflat_bootstrap-core"), YFFLAT_VERSION, "all");
 
     // chargement des scripts
-    wp_enqueue_script("yfflat_script", get_template_directory_uri() . "/js/app.js", array("jquery"), YFFLAT_VERSION, true);
+    wp_enqueue_script("yfflat_admin_script", get_template_directory_uri() . "/js/app.js", array("jquery"), YFFLAT_VERSION, true);
 
 } // fin function yfflat_scipts
 
@@ -19,7 +19,18 @@ add_action("wp_enqueue_scripts", "yfflat_scripts");
 //chargement d'un script dans l'admin de worpress
 function yfflat_admin_scripts() {
     // chargement des styles
-    wp_enqueue_style("bootstrap-admin-core", get_template_directory_uri() . "/css/bootstrap.min.css", array(), FLAT_VERSION)
+    wp_enqueue_style("bootstrap-admin-core", get_template_directory_uri() . "/css/bootstrap.min.css", array(), YFFLAT_VERSION);
 } // fin function yfflat_scripts
 
 add_action("admin_init", "yfflat_admin_scripts");
+
+//============================================================================================================
+//=================          utilitaires$
+//============================================================================================================
+function yfflat_setup() {
+    //support des vignettes
+    add_theme_support( "post-thumbnails" );
+
+} //fin function  yfflat_setup
+
+add_action("after_setup_theme", "yfflat_setup");
