@@ -1,0 +1,16 @@
+/*
+Theme Name: FlatAcsDesign
+Author: Yoan Fornari
+Author URI: http://yoanf.promo-17.codeur.online
+Description: The new blog of promo 17 Access Code School
+Version: 1.0
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #9b2727;
+    font-family: Helvetica;
+}
