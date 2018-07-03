@@ -10,8 +10,8 @@ function yfflat_scripts(){
     wp_enqueue_style("yfflat_custom", get_template_directory_uri() . "/css/style.css", array("yfflat_bootstrap-core"), YFFLAT_VERSION, "all");
 
     // chargement des scripts
-    wp_enqueue_script("yfflat_admin_script", get_template_directory_uri() . "/js/app.js", array("jquery"), YFFLAT_VERSION, true);
-
+    wp_enqueue_script("yfflat_bootstrap_js", get_template_directory_uri() . "/js/bootstrap.min.js", array("jquery"), YFFLAT_VERSION, true);
+    wp_enqueue_script("yfflat_admin_script", get_template_directory_uri() . "/js/app.js", array("jquery", "yfflat_bootstrap_js"), YFFLAT_VERSION, true);
 } // fin function yfflat_scipts
 
 add_action("wp_enqueue_scripts", "yfflat_scripts");
@@ -30,6 +30,15 @@ add_action("admin_init", "yfflat_admin_scripts");
 function yfflat_setup() {
     //support des vignettes
     add_theme_support( "post-thumbnails" );
+
+    // enlève générateur de version
+    remove_action("wp_head", "wp_generator");
+    
+    //enlève les guillemets à la fr
+    remove_filter("the_content", "wptexturize");
+
+    // support du titre
+    add_theme_support( "title-tag" );
 
 } //fin function  yfflat_setup
 
