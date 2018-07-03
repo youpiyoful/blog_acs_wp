@@ -34,6 +34,7 @@
     </nav>
 
   </header>
+
   <div class="container">
     <div class="jumbotron">
       <h1>coucou c'est nous</h1>
@@ -42,53 +43,32 @@
 
   <section>
     <div class="container">
-      <div class="row md-dw-30">
-        <div class="col-2"><img src="<?php echo get_template_directory_uri(); ?>/assets/rick_morty.jpg" alt="" class="img-fluid"></div>
-        <div class="col-10">
-          <h1></h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit accusamus corporis laborum quae, laboriosam deserunt aperiam autem sit voluptate delectus, placeat soluta, hic ut nobis a mollitia voluptatibus? Cumque, harum.</p>
-        </div>
-      </div> <!-- /row md-dw-30 -->
+      <?php if (have_posts()):  ?>
+      
+        <?php while(have_posts()): the_post(); ?>
+          <div class="row md-dw-30">
+            <div class="col-2">
+              <?php the_post_thumbnail("thumbnail"); ?>
+            </div>
+            <div class="col-10">
+              <h1><?php the_title();?></h1>
+              <?php the_excerpt(); ?>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit accusamus corporis laborum quae, laboriosam deserunt aperiam autem sit voluptate delectus, placeat soluta, hic ut nobis a mollitia voluptatibus? Cumque, harum.</p>
+            </div>
+          </div> <!-- /row md-dw-30 -->
+        <?php endwhile; ?>
+      
+      <?php else: ?>
+          <div class="row">
+            <div class="col-12">
+              <p>y a pas de résultats</p>
+            </div>
+          </div> <!-- /row -->
+      <?php endif; ?>
     </div> <!-- /container -->
   </section>
 
-  <section>
-    <div class="container">
-      <div class="row md-dw-30">
-        <div class="col-2"><img src="<?php echo get_template_directory_uri(); ?>/assets/rick_morty.jpg" alt="" class="img-fluid"></div>
-        <div class="col-10">
-          <h1></h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit accusamus corporis laborum quae, laboriosam deserunt aperiam autem sit voluptate delectus, placeat soluta, hic ut nobis a mollitia voluptatibus? Cumque, harum.</p>
-        </div>
-      </div> <!-- /row md-dw-30 -->
-    </div> <!-- /container -->
-  </section>
-
-
-  <section>
-    <div class="container">
-      <div class="row md-dw-30">
-        <div class="col-2"><img src="<?php echo get_template_directory_uri(); ?>/assets/rick_morty.jpg" alt="" class="img-fluid"></div>
-        <div class="col-10">
-          <h1></h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit accusamus corporis laborum quae, laboriosam deserunt aperiam autem sit voluptate delectus, placeat soluta, hic ut nobis a mollitia voluptatibus? Cumque, harum.</p>
-        </div>
-      </div> <!-- /row md-dw-30 -->
-    </div> <!-- /container -->
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="row md-dw-30">
-        <div class="col-2"><img src="<?php echo get_template_directory_uri(); ?>/assets/rick_morty.jpg" alt="" class="img-fluid"></div>
-        <div class="col-10">
-          <h1></h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit accusamus corporis laborum quae, laboriosam deserunt aperiam autem sit voluptate delectus, placeat soluta, hic ut nobis a mollitia voluptatibus? Cumque, harum.</p>
-        </div>
-      </div> <!-- /row md-dw-30 -->
-    </div> <!-- /container -->
-  </section>
-
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur, veritatis magnam! Voluptate neque a aut doloremque obcaecati? Velit, accusamus cumque! Nulla ad nesciunt assumenda maiores nisi, amet quia ab nobis.</p>
   <?php wp_footer() ?>
 </body>
 </html>
